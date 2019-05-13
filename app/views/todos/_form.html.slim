@@ -1,3 +1,8 @@
+- if todo.errors.present?
+  ul#error_explanation
+    - todo.errors.full_messages.each do |message|
+      li = message
+
 = form_with model: todo, local: true do |f|
   .form-group
     = f.label :name
