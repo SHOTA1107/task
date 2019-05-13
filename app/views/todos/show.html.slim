@@ -1,2 +1,24 @@
-h1 Todos#show
-p Find me in app/views/todos/show.html.slim
+h1 Todo 詳細
+
+.nav.justify-content-end
+  = link_to '一覧', todo_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Todo.human_attribute_name(:id)
+      td= @todo.id
+    tr
+      th= Todo.human_attribute_name(:name)
+      td= @todo.name
+    tr
+      th= Todo.human_attribute_name(:description)
+      td= simple_format(h(@todo.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Todo.human_attribute_name(:created_at)
+      td= @todo.created_at
+    tr
+      th= Todo.human_attribute_name(:update_at)
+      td= @todo.updated_at
+
+= link_to '編集', edit_todo_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @todo, method: :delete, data: { confirm: "Todo #{@todo.name} を削除します。よろしいですか？"}, class: 'btn btn-danger'
