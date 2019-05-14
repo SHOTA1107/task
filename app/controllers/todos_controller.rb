@@ -2,7 +2,8 @@ class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @todos = current_user.todos.order(created_at: :desc)
+    @q = current_user.todos.ransack(params[:q])
+    @todos = @q.result(distinct: true)
   end
 
   def show
@@ -26,6 +27,11 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.new(todo_params)
 
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @todo.save
       redirect_to @todo, notice: "Todo #{@todo.name} を登録しました"
     else
@@ -37,6 +43,11 @@ class TodosController < ApplicationController
     todo = current_user.todos.find(params[:id])
     todo.destroy
     redirect_to todos_url, notice: "Todo #{todo.name} を削除しました"
+  end
+
+  def confirm_new
+    @todo = current_user.todos.new(todo_params)
+    render :new unless @todo.valid?
   end
 
   private
