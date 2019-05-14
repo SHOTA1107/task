@@ -12,7 +12,7 @@ table.table.table-hover
       td= @todo.name
     tr
       th= Todo.human_attribute_name(:description)
-      td= simple_format(h(@todo.description), {}, sanitize: false, wrapper_tag: "div")
+      td= auto_link(simple_format(h(@todo.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
       th= Todo.human_attribute_name(:created_at)
       td= @todo.created_at
