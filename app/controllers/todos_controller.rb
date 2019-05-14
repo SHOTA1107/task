@@ -27,7 +27,7 @@ class TodosController < ApplicationController
     @todo = current_user.todos.new(todo_params)
 
     if @todo.save
-      redirect_to @todo, notice: "Todo #{todo.name} を登録しました"
+      redirect_to @todo, notice: "Todo #{@todo.name} を登録しました"
     else
       render :new
     end
