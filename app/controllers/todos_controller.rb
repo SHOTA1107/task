@@ -1,10 +1,10 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
   end
 
   def show
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find(params[:id])
   end
 
   def new
@@ -12,17 +12,17 @@ class TodosController < ApplicationController
   end
 
   def edit
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find(params[:id])
   end
 
   def update
-    todo = Todo.find(params[:id])
+    todo = current_user.todos.find(params[:id])
     todo.update!(todo_params)
     redirect_to todos_url, notice: "Todo #{todo.name} を更新しました"
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user.todos.new(todo_params)
 
     if @todo.save
       redirect_to @todo, notice: "Todo #{todo.name} を登録しました"
@@ -32,7 +32,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    todo = Todo.find(params[:id])
+    todo = current_user.todos.find(params[:id])
     todo.destroy
     redirect_to todos_url, notice: "Todo #{todo.name} を削除しました"
   end
