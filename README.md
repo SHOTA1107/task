@@ -17,9 +17,13 @@
 ・一覧画面にソート機能実装
 
 # Requirement
-・ Ruby 2.5.1
+・Ruby 2.5.1
 
-・ Rails 5.2.1
+・Rails 5.2.1
+
+・DBにはpostgresqlを使用
+
+・herokuにてデプロイ(https://task1107.herokuapp.com)
 
 # Development Period
 ・ 2019/05/12-05/14
