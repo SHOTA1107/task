@@ -2,9 +2,9 @@ h1 ログイン
 
 = form_with scope: :session, local: true do |f|
   .form-group
-    = f.label :email, 'メールアドレス'
+    = f.label :email, 'メールアドレス(管理者 admin@example.com, 一般ユーザー test@example.com)'
     = f.text_field :email, class: 'form-control', id: 'session_email'
   .form-group
-    = f.label :password, 'パスワード'
+    = f.label :password, 'パスワード(共に password)'
     = f.password_field :password, class: 'form-control', id: 'session_password'
   = f.submit 'ログインする', class: 'btn btn-primary'
