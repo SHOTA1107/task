@@ -40,9 +40,10 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    todo = current_user.todos.find(params[:id])
-    todo.destroy
-    redirect_to todos_url, notice: "Todo #{todo.name} を削除しました"
+    @todo.destroy
+    # todo = current_user.todos.find(params[:id])
+    # todo.destroy
+    # redirect_to todos_url, notice: "Todo #{todo.name} を削除しました"
   end
 
   def confirm_new

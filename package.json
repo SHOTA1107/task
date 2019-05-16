@@ -1,5 +1,8 @@
 {
   "name": "task",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }

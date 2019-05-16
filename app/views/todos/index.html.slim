@@ -23,9 +23,9 @@ table.table.table-hover
       th
   tbody
     - @todos.each do |todo|
-      tr
+      tr id="todo - #{todo.id}"
         td= link_to todo.name, todo
         td= todo.created_at
         td
           = link_to '編集', edit_todo_path(todo), class: 'btn btn-primary mr-3'
-          = link_to '削除', todo, method: :delete, data: { confirm: "Todo #{todo.name} を削除します。よろしいですか？"}, class: 'btn btn-danger'
+          = link_to '削除', todo, method: :delete, remote: true, data: { confirm: "Todo #{todo.name} を削除します。よろしいですか？"}, class: 'btn btn-danger delete'
