@@ -18,6 +18,8 @@
 
 ・画像投稿機能
 
+・定期処理の実行(Redis,sidekiq)
+
 # Requirement
 ・Ruby 2.5.1
 

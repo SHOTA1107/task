@@ -33,6 +33,7 @@ class TodosController < ApplicationController
     end
 
     if @todo.save
+      SampleJob.perform_later
       redirect_to @todo, notice: "Todo #{@todo.name} を登録しました"
     else
       render :new
