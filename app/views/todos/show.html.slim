@@ -14,6 +14,9 @@ table.table.table-hover
       th= Todo.human_attribute_name(:description)
       td= auto_link(simple_format(h(@todo.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
+      td= Todo.human_attribute_name(:image)
+      td= image_tag @todo.image if @todo.image.attached?
+    tr
       th= Todo.human_attribute_name(:created_at)
       td= @todo.created_at
     tr

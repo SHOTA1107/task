@@ -3,17 +3,19 @@ h1 Todo 新規登録
 .nav.justify-content-end
  = link_to '一覧', todos_path, class: 'nav-link'
 
-- if @todo.errors.present?
-  ul#error_explanation
-    - @todo.errors.full_messages.each do |message|
-      li= message
+= render partial: 'form', locals: { todo: @todo }
 
-= form_with model: @todo, local: true, url: confirm_new_todo_path do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'todo_name'
-  .form-group
-    = f.label :description
-    = f.text_area :description, rows: 5, class: 'form-control', id: 'todo_description'
-  = f.submit '確認', class: 'btn btn-primary'
+/ - if @todo.errors.present?
+/   ul#error_explanation
+/     - @todo.errors.full_messages.each do |message|
+/       li= message
+
+/ = form_with model: @todo, local: true, url: confirm_new_todo_path do |f|
+/   .form-group
+/     = f.label :name
+/     = f.text_field :name, class: 'form-control', id: 'todo_name'
+/   .form-group
+/     = f.label :description
+/     = f.text_area :description, rows: 5, class: 'form-control', id: 'todo_description'
+/   = f.submit '確認', class: 'btn btn-primary'
 
